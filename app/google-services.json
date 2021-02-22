@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "471738383771",
+    "project_id": "mensageiro-d1bc5",
+    "storage_bucket": "mensageiro-d1bc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471738383771:android:e20daa830dca95ba58b53e",
+        "android_client_info": {
+          "package_name": "com.example.mensageiro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471738383771-n4u5e0cfhamt8br0focs85s2s317mj40.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mensageiro",
+            "certificate_hash": "429adf604bfd1c629a9a40a2f816883b541b3784"
+          }
+        },
+        {
+          "client_id": "471738383771-bekm06gpidv05mgqcjmskntdl4ku8387.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLvgdyKp1HRnKAlhLtx3K_IkCn6j39OK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471738383771-bekm06gpidv05mgqcjmskntdl4ku8387.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
