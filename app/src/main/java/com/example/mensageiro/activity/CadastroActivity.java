@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.mensageiro.R;
 import com.example.mensageiro.config.ConfiguracaoFirebase;
 import com.example.mensageiro.helper.Base64Custom;
+import com.example.mensageiro.helper.UsuarioFirebase;
 import com.example.mensageiro.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -54,11 +55,13 @@ public class CadastroActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-
                     Toast.makeText(CadastroActivity.this,
                             "Usuário cadastrado com sucesso.",
                             Toast.LENGTH_SHORT
                     ).show();
+
+                    UsuarioFirebase.atualizarNomeUsuario(u.getNome());
+
                     finish();
 
                 }else {

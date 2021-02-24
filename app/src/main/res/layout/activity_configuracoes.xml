@@ -6,26 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activity.ConfiguracoesActivity">
 
-    <ImageButton
-        android:id="@+id/imageButtonCameraConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_camera"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintStart_toStartOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageViewFotoPerfil"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:src="@drawable/padrao"
@@ -35,6 +19,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageButton
+        android:id="@+id/imageButtonCameraConfig"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_camera"
+        android:onClick="abrirCameraConfiguracoes"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageViewFotoPerfil"
+        app:layout_constraintStart_toStartOf="@+id/circleImageViewFotoPerfil" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGaleriaConfig"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_foto"
+        android:onClick="abrirGaleriaConfiguracoes"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageViewFotoPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/circleImageViewFotoPerfil" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -54,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/circleImageViewFotoPerfil">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextNomeConfig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -80,25 +89,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <ImageButton
-        android:id="@+id/imageButtonGaleriaConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_foto"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintEnd_toEndOf="@+id/circleImageViewFotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
-
-    <Button
-        android:id="@+id/buttonTeste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="100dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
