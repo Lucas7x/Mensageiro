@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.mensageiro.config.ConfiguracaoFirebase;
+import com.example.mensageiro.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +26,22 @@ public class UsuarioFirebase {
     public static FirebaseUser getUsuarioAtual() {
         FirebaseAuth usuario = ConfiguracaoFirebase.getFirebaseAuth();
         return usuario.getCurrentUser();
+    }
+
+    public static Usuario getDadosUsuarioLogado() {
+        FirebaseUser firebaseUsuario = getUsuarioAtual();
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(firebaseUsuario.getEmail());
+        usuario.setNome(firebaseUsuario.getDisplayName());
+        if(firebaseUsuario.getPhotoUrl() == null) {
+            usuario.setFoto("");
+        } else {
+            usuario.setFoto(firebaseUsuario.getPhotoUrl().toString());
+        }
+
+        return usuario;
+
     }
 
     public static boolean atualizarFotoUsuario(Uri url) {

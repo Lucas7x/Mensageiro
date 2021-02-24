@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -30,6 +31,7 @@ import com.example.mensageiro.config.ConfiguracaoFirebase;
 import com.example.mensageiro.helper.Base64Custom;
 import com.example.mensageiro.helper.Permissao;
 import com.example.mensageiro.helper.UsuarioFirebase;
+import com.example.mensageiro.model.Usuario;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,12 +58,14 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     private ImageButton imageButtonCamera, imageButtonGaleria;
     private CircleImageView circleImageViewPerfil;
     private EditText editNome;
+    private ImageView imageAtualizarNome;
 
 
     private static final int SELECAO_CAMERA  = 100;
     private static final int SELECAO_GALERIA = 101;
 
     private String idUsuario;
+    private Usuario usuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         //configurações iniciais
         storageReference = ConfiguracaoFirebase.getFirebaseStorage();
         idUsuario = UsuarioFirebase.getIdUsuario();
+        usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
 
 
         //Validar permissões
@@ -81,6 +86,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         imageButtonGaleria = findViewById(R.id.imageButtonGaleriaConfig);
         circleImageViewPerfil = findViewById(R.id.circleImageViewFotoPerfil);
         editNome = findViewById(R.id.editTextNomeConfig);
+        imageAtualizarNome = findViewById(R.id.imageAtualizarNome);
 
 
         //configurando toolbar
@@ -323,6 +329,40 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
 
     public void atualizaFotoUsuario(Uri url) {
-        UsuarioFirebase.atualizarFotoUsuario(url);
+        boolean retorno = UsuarioFirebase.atualizarFotoUsuario(url);
+        if(retorno) {
+            usuarioLogado.setFoto(url.toString());
+            usuarioLogado.atualizar();
+
+            Toast.makeText(
+                    ConfiguracoesActivity.this,
+                    "Sua foto foi alterada.",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+
+    }
+
+    public void atualizaNomeUsuario(View view) {
+        String nome = editNome.getText().toString();
+        boolean retorno = UsuarioFirebase.atualizarNomeUsuario(nome);
+
+        if (retorno) {
+            usuarioLogado.setNome(nome);
+            usuarioLogado.atualizar();
+
+            Toast.makeText(
+                    ConfiguracoesActivity.this,
+                    "Nome alterado com sucesso.",
+                    Toast.LENGTH_SHORT
+            ).show();
+        } else {
+            Toast.makeText(
+                    ConfiguracoesActivity.this,
+                    "Falha ao alterar o nome.",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+
     }
 }
